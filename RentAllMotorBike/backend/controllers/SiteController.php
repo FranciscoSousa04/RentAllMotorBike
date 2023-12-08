@@ -26,6 +26,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['login', 'error'],
                         'allow' => true,
+
                     ],
                     [
                         'actions' => ['logout', 'index'],
@@ -80,7 +81,17 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            //verfica o role do user, caso nao seja admin nem gestor é efetuado o logout
+            if(array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] != "admin" && array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] != "gestor") {
+                Yii::$app->user->logout();
+                return $this->goBack();
+            }else{
+                if($model->hasProfile(Yii::$app->user->id)){
+                    return $this->goBack();
+                }else{
+                    return $this->redirect(array('profile/create'));
+                }
+            }
         }
 
         $model->password = '';

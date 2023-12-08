@@ -76,4 +76,15 @@ class LoginForm extends Model
 
         return $this->_user;
     }
+    public function hasProfile($id){
+
+        if(Profile::findOne(['id_profile' => $id]) != null){
+            return true;
+        }else{
+
+            return false;
+
+        }
+
+    }
 }
