@@ -43,13 +43,7 @@ $roles = array('admin' => 'admin', 'gestor' => 'gestor', 'cliente' => 'cliente')
                     }
                 },
             ],
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} '],
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, User $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                }
-            ],
+            ['class' => ActionColumn::className(),'template' => '{view} {update} {delete}'],
         ],
     ]); ?>
 

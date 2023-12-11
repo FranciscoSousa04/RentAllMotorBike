@@ -11,7 +11,23 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'aliases' => [
+        '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets'
+    ],
+    'modules' => [
+        'rbac' => [
+            'class' => 'yii2mod\rbac\Module',
+            'as access' => [
+                'class' => 'yii\filters\AccessControl',
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -42,6 +58,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'user' => 'user/index',
+                'admin/' => 'user/view',
+                'admin' => 'user/update',
+                'gestor' => 'user/view',
+
             ],
         ],
 
