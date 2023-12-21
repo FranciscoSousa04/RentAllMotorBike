@@ -5,6 +5,7 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use common\models\User;
+use common\models\Profile;
 
 /**
  * Signup form
@@ -14,6 +15,13 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    
+    //dados pessoais/profile
+    public $nome;
+    public $apelido;
+    public $telemovel;
+    public $nif;
+    public $cartaConducao;
 
 
     /**
@@ -35,6 +43,21 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            ['nome', 'required'],
+            ['nome', 'string', 'min' => 3, 'max' => 30],
+
+            ['apelido', 'required'],
+            ['apelido', 'string', 'min' => 3, 'max' => 30],
+
+            ['telemovel', 'required'],
+            ['telemovel', 'integer', 'min' => 900000000, 'max' => 999999999],
+
+            ['nif', 'required'],
+            ['nif', 'integer','min' => 000000000, 'max' => 999999999],
+
+            ['cartaConducao', 'required'],
+            ['cartaConducao', 'string', 'min' => 11, 'max' => 13],
         ];
     }
 
@@ -48,15 +71,30 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
+
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        $user->generateEmailVerificationToken();
+        $user->save(false);
 
-        return $user->save() && $this->sendEmail($user);
+        //no signUp é atribuido o role de cliente
+        $auth = Yii::$app->authManager;
+        $cliente = $auth->getRole('cliente');
+        $auth->assign($cliente, $user->getId());
+        $user->save();
+
+        $profile = new Profile();
+        $profile->id_profile = $user->id;
+        $profile->nome = $this->nome;
+        $profile->apelido = $this->apelido;
+        $profile->nif = $this->nif;
+        $profile->telemovel = $this->telemovel;
+        $profile->nr_cartaconducao = $this->cartaConducao;
+        $profile->save();
+
+        return true;
     }
 
     /**
