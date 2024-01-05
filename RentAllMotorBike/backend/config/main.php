@@ -15,6 +15,9 @@ return [
         '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets'
     ],
     'modules' => [
+        'api' => [
+            'class' => 'backend\modules\api\API',
+        ],
         'rbac' => [
             'class' => 'yii2mod\rbac\Module',
             'as access' => [
