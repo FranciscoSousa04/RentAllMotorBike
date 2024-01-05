@@ -228,9 +228,9 @@ class UserController extends ActiveController
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-        $veiculo = Profile::findOne($id);
+        $motociclo = Profile::findOne($id);
 
-        return $veiculo;
+        return $motociclo;
 
     }
 }

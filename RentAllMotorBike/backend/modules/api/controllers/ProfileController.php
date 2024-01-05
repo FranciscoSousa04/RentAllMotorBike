@@ -33,7 +33,6 @@ class ProfileController extends \yii\web\Controller
 
     }
 
-    //http://localhost:8888/equipamento/total
     public function actionTotal()
     {
         $eqpmodel = new $this->modelClass;

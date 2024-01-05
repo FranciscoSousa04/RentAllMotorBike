@@ -12,20 +12,19 @@ use yii\web\Controller;
 
 class TipomotocicloController extends \yii\web\Controller
 {
-    public $modelClass = 'common\models\Veiculo';
+    public $modelClass = 'common\models\Motociclo';
 
     public function actionIndex()
     {
         if (!\Yii::$app->user->isGuest) {
 
-            $veiculo = TipoVeiculo::find()->all();
+            $motociclo = TipoMotociclo::find()->all();
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            return $veiculo;
+            return $motociclo;
         }
     }
 
-    //http://localhost:8888/equipamento/total
     public function actionTotal()
     {
         $eqpmodel = new $this->modelClass;

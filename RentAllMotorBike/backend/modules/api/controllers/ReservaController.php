@@ -36,7 +36,7 @@ class ReservaController extends \yii\web\Controller
                 "id_reserva" => $i->id_detalhes_aluguer,
                 "data_inicio" => date("d/m/Y", strtotime($i->data_inicio)),
                 "data_fim" => date("d/m/Y", strtotime($i->data_fim)),
-                "veiculo_id" => $i->motociclo_id,
+                "motociclo_id" => $i->motociclo_id,
                 "marca" => $i->motociclo->marca,
                 "modelo" => $i->motociclo->modelo,
                 "matricula" => $i->motociclo->matricula,
@@ -70,10 +70,10 @@ class ReservaController extends \yii\web\Controller
                 "id_reserva" => $i->id_detalhes_aluguer,
                 "data_inicio" => date("d/m/Y", strtotime($i->data_inicio)),
                 "data_fim" => date("d/m/Y", strtotime($i->data_fim)),
-                "veiculo_id" => $i->veiculo_id,
-                "marca" => $i->veiculo->marca,
-                "modelo" => $i->veiculo->modelo,
-                "matricula" => $i->veiculo->matricula,
+                "motociclo_id" => $i->motociclo_id,
+                "marca" => $i->motociclo->marca,
+                "modelo" => $i->motociclo->modelo,
+                "matricula" => $i->motociclo->matricula,
                 "profile_id" => $i->profile_id,
                 "seguro_id" => $i->seguro_id,
                 "seguro" => $i->seguro->cobertura,
@@ -85,7 +85,6 @@ class ReservaController extends \yii\web\Controller
         return $reserva;
     }
 
-    //http://localhost:8888/veiculo/view?id=1
     public function actionPedido($idprofile, $idveiculo, $etmensagem, $etlocalizacao, $etestado)
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

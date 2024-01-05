@@ -18,14 +18,13 @@ class AnaliseController extends \yii\web\Controller
     {
         if (!\Yii::$app->user->isGuest) {
 
-            $veiculo = Analise::find()->all();
+            $motociclo = Analise::find()->all();
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            return $veiculo;
+            return $motociclo;
         }
     }
 
-    //http://localhost:8888/equipamento/total
     public function actionTotal()
     {
         $eqpmodel = new $this->modelClass;
