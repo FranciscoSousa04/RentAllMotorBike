@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="tipo-motociclo-form">
+<div class="tipomotociclo-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

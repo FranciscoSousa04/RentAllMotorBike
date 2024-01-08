@@ -14,7 +14,7 @@ use yii\grid\GridView;
 $this->title = 'Tipo motociclos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="tipo-motociclo-index">
+<div class="tipomotociclo-index">
 
 
     <p>
@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
 
             'id_tipo_motociclo',

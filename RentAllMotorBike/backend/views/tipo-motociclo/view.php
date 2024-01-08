@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Tipo motociclos', 'url' => ['index
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="tipo-motociclo-view">
+<div class="tipomotociclo-view">
 
     <p>
         <?= Html::a('Update', ['update', 'id_tipo_motociclo' => $model->id_tipo_motociclo], ['class' => 'btn btn-primary']) ?>

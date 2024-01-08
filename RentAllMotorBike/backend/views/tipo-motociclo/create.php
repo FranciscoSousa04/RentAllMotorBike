@@ -9,7 +9,7 @@ $this->title = 'Create Tipo motociclo';
 $this->params['breadcrumbs'][] = ['label' => 'Tipo motociclos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="tipo-motociclo-create">
+<div class="tipomotociclo-create">
 
 
     <?= $this->render('_form', [

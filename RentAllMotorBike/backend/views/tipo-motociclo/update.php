@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Tipo motociclos', 'url' => ['index
 $this->params['breadcrumbs'][] = ['label' => $model->id_tipo_motociclo, 'url' => ['view', 'id_tipo_motociclo' => $model->id_tipo_motociclo]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="tipo-motociclo-update">
+<div class="tipomotociclo-update">
 
     <?= $this->render('_form', [
         'model' => $model,
