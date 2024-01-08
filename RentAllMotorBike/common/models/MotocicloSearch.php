@@ -17,8 +17,8 @@ class MotocicloSearch extends Motociclo
     public function rules()
     {
         return [
-            [['id_Motociclo', 'tipo_Motociclo_id', 'localizacao_id', 'franquia'], 'integer'],
-            [['marca', 'modelo', 'combustivel', 'matricula', 'descricao', 'estado', 'franquia'], 'safe'],
+            [['idmotociclo', 'tipo_Motociclo_id', 'localizacao_id', 'franquia'], 'integer'],
+            [['marca', 'modelo', 'combustivel','descricao', 'estado', 'franquia'], 'safe'],
             [['preco'], 'number'],
             [['tipoMotociclos'], 'safe'],
         ];
@@ -66,7 +66,7 @@ class MotocicloSearch extends Motociclo
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id_Motociclo' => $this->id_Motociclo,
+            'idmotociclo' => $this->idmotociclo,
             'preco' => $this->preco,
             'tipo_Motociclo_id' => $this->tipo_Motociclo_id,
             'localizacao_id' => $this->localizacao_id,
@@ -76,7 +76,6 @@ class MotocicloSearch extends Motociclo
         $query->andFilterWhere(['like', 'marca', $this->marca])
             ->andFilterWhere(['like', 'modelo', $this->modelo])
             ->andFilterWhere(['like', 'combustivel', $this->combustivel])
-            ->andFilterWhere(['like', 'matricula', $this->matricula])
             ->andFilterWhere(['like', 'descricao', $this->descricao])
             ->andFilterWhere(['like', 'estado', $this->estado]);
 

@@ -11,12 +11,11 @@ use yii\web\UploadedFile;
 /**
  * This is the model class for table "Motociclo".
  *
- * @property int $id_Motociclo
+ * @property int $idmotociclo
  * @property string $marca
  * @property string $modelo
  * @property string $combustivel
  * @property float $preco
- * @property string $matricula
  * @property string $descricao
  * @property string $estado
  * @property int $tipo_Motociclo_id
@@ -48,19 +47,19 @@ class Motociclo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['marca', 'modelo', 'combustivel', 'preco', 'matricula', 'descricao', 'estado', 'tipo_Motociclo_id', 'localizacao_id', 'franquia'], 'required'],
+            [['marca', 'modelo', 'combustivel', 'preco', 'descricao', 'estado', 'tipo_motociclo_id', 'localizacao_id', 'franquia'], 'required'],
             [['preco'], 'number'],
             [['estado'], 'string'],
-            [['tipo_Motociclo_id', 'localizacao_id', 'franquia'], 'integer'],
+            [['idmotociclo', 'localizacao_id', 'franquia'], 'integer'],
             [['marca'], 'string', 'max' => 21],
             [['modelo'], 'string', 'max' => 31],
-            [['combustivel', 'matricula'], 'string', 'max' => 9],
+            [['combustivel'], 'string', 'max' => 9],
             [['descricao'], 'string', 'max' => 255],
-            [['matricula'], 'unique'],
             [['localizacao_id'], 'exist', 'skipOnError' => true, 'targetClass' => Localizacao::class, 'targetAttribute' => ['localizacao_id' => 'id_localizacao']],
-            [['tipo_Motociclo_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoMotociclo::class, 'targetAttribute' => ['tipo_Motociclo_id' => 'id_tipo_Motociclo']],
+            [['tipo_motociclo_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoMotociclo::class, 'targetAttribute' => ['tipo_motociclo_id' => 'id_tipo_motociclo']],
         ];
     }
+
 
     /**
      * {@inheritdoc}
@@ -68,12 +67,11 @@ class Motociclo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_Motociclo' => 'Id Motociclo',
+            'idmotociclo' => 'Id Motociclo',
             'marca' => 'Marca',
             'modelo' => 'Modelo',
             'combustivel' => 'Combustivel',
             'preco' => 'Preco',
-            'matricula' => 'Matricula',
             'descricao' => 'Descricao',
             'estado' => 'Estado',
             'tipo_Motociclo_id' => 'Categoria',
@@ -89,7 +87,7 @@ class Motociclo extends \yii\db\ActiveRecord
      */
     public function getAssistencias()
     {
-        return $this->hasMany(Assistencia::class, ['Motociclo_id' => 'id_Motociclo']);
+        return $this->hasMany(Assistencia::class, ['Motociclo_id' => 'idmotociclo']);
     }
 
     /**
@@ -99,7 +97,7 @@ class Motociclo extends \yii\db\ActiveRecord
      */
     public function getDetalhesAluguers()
     {
-        return $this->hasMany(DetalhesAluguer::class, ['Motociclo_id' => 'id_Motociclo']);
+        return $this->hasMany(DetalhesAluguer::class, ['Motociclo_id' => 'idmotociclo']);
     }
 
     /**
@@ -109,7 +107,7 @@ class Motociclo extends \yii\db\ActiveRecord
      */
     public function getImagems()
     {
-        return $this->hasMany(Imagem::class, ['Motociclo_id' => 'id_Motociclo']);
+        return $this->hasMany(Imagem::class, ['Motociclo_id_imagem' => 'idmotociclo']);
     }
 
     /**
