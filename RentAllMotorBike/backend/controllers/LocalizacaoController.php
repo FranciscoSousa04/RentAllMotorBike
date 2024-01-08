@@ -140,10 +140,10 @@ class LocalizacaoController extends Controller
     public function actionDelete($id_localizacao)
     {
         if(\Yii::$app->user->can('deleteLocalizacao')){
-            $this->findModel($id_localizacao)->delete();
+        $this->findModel($id_localizacao)->delete();
 
-            return $this->redirect(['index']);
-        }
+        return $this->redirect(['index']);
+    }
 
         else{
             Yii::$app->user->logout();

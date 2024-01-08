@@ -24,13 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
 
             'id_localizacao',
             'localizacao',
             'morada',
-            'cod_postal',
+            'codigo_postal',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Localizacao $model, $key, $index, $column) {
