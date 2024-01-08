@@ -46,11 +46,6 @@ class UserController extends Controller
                             'actions' => [ 'view', 'create', 'delete'],
                             'roles' => ['gestor'],
                         ],
-                        [
-                            'allow' => false,
-                            'actions' => [ 'view'],
-                            'roles' => ['cliente'],
-                        ],
                     ],
                 ],
             ],
@@ -64,13 +59,7 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UserSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+      return $this ->redirect(['profile/index']);
     }
 
     /**
@@ -82,7 +71,7 @@ class UserController extends Controller
     public function actionView($id)
     {
         $model = new LoginForm();
-       // var_dump($model->hasProfile());
+        //var_dump($model->hasProfile());
         if ($model->hasProfile($id)==false) {
             Yii::$app->session->setFlash('error','Este utilizador não tem profile criado');
             $this->redirect('index');

@@ -11,11 +11,14 @@ use yii\helpers\Url;
             <?= Yii::$app->session->getFlash('error') ?>
         </div>
     <?php endif;
+    $total = \common\models\Detalhesaluguer::find()->where([])->count();
+    $total1 = \common\models\motociclo::find()->where([])->count();
     $total2 = \common\models\Profile::find()->where([])->count(); ?>
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <div class="small-box bg-gradient-warning">
                 <div class="inner">
+                    <h3><?= $total ?></h3>
                     <p>Novos pedidos</p>
                 </div>
                 <div class="icon">
@@ -27,6 +30,7 @@ use yii\helpers\Url;
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <div class="small-box bg-info">
                 <div class="inner">
+                    <h3><?= $total1 ?></h3>
                     <p>motociclos totais</p>
                 </div>
                 <div class="icon">
@@ -44,7 +48,7 @@ use yii\helpers\Url;
                 <div class="icon">
                     <i class="fas fa-user-plus"></i>
                 </div>
-                <a href="<?= Url::toRoute('/user/index') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= Url::toRoute('/profile/index') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
