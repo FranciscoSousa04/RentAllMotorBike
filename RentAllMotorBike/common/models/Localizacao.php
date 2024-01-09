@@ -14,7 +14,7 @@ use Yii;
  *
  * @property DetalhesAluguer[] $detalhesAluguerLevantamento
  * @property DetalhesAluguer[] $detalhesAluguerDevolucao
- * @property Motociclo[] $Motociclos
+ * @property motociclo[] $motociclos
  */
 class Localizacao extends \yii\db\ActiveRecord
 {
@@ -73,12 +73,12 @@ class Localizacao extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Motociclos]].
+     * Gets query for [[motociclos]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getMotociclos()
+    public function getmotociclos()
     {
-        return $this->hasMany(Motociclo::class, ['localizacao_id' => 'id_localizacao']);
+        return $this->hasMany(motociclo::class, ['localizacao_id' => 'id_localizacao']);
     }
 }

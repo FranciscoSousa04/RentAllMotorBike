@@ -76,8 +76,9 @@ class FaturaController extends Controller
     public function actionView($detalhes_aluguer_fatura_id)
     {
         $id_fatura=Fatura::findOne(['detalhes_aluguer_fatura_id'=>$detalhes_aluguer_fatura_id]);
+
         return $this->render('view', [
-            'model' => $this->findModel($id_fatura),
+            'model' => $this->findModel($id_fatura->id_fatura),
         ]);
     }
 
@@ -110,6 +111,7 @@ class FaturaController extends Controller
         foreach ($detalhesAluguer->extraDetalhesAluguers as $extraDetalhesAl) {
             $precoTotal += $extraDetalhesAl->extra->preco;
         }
+
         $precoTotal = ($detalhesAluguer->motociclo->preco + $precoTotal + $detalhesAluguer->seguro->preco) * $nrDias;
 
         $model->preco_total = $precoTotal;
@@ -117,16 +119,6 @@ class FaturaController extends Controller
         //fazer save da tabela fatura
         $model->save();
 
-        //cada item do detalhesAluguer = nova linha fatura
-        /*
-            linhaFatura 
-            id 1: VW Golf, preco
-            id 2: Seguro, preco
-            id 3: localizacao recolha
-            id 4: localizacao entrega
-            id 5: extra 1, preco
-            id 6: extra 2, preco
-        */
 
         $itemFatura = array(
             array($detalhesAluguer->motociclo->marca . ' ' . $detalhesAluguer->motociclo->modelo, $detalhesAluguer->motociclo->preco),
@@ -143,12 +135,12 @@ class FaturaController extends Controller
         foreach($itemFatura as $item){
             $linhaFatura = new LinhaFatura();
             $linhaFatura->descricao = $item[0];        
-            $linhaFatura->preco = $item[1];        
+            $linhaFatura->preco = $item[1];
             $linhaFatura->fatura_id = $model->id_fatura;
             $linhaFatura->save();
         }
 
-        //var_dump($itemFatura);
+
         //var_dump(count($detalhesAluguer->extraDetalhesAluguers));die;
 
         /*return $this->render('create', [

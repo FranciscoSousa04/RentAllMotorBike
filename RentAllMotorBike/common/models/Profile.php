@@ -17,7 +17,6 @@ use Yii;
  *
  * @property Analise[] $analises
  * @property Assistencia[] $assistencias
- * @property CarrinhoCompras[] $carrinhoCompras
  * @property DetalhesAluguer[] $detalhesAluguers
  * @property User $user
  */
@@ -67,7 +66,7 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getAnalises()
     {
-        return $this->hasMany(Analise::class, ['uprofile_id' => 'id_profile']);
+        return $this->hasMany(Analise::class, ['profile_id' => 'id_profile']);
     }
 
     /**
@@ -85,10 +84,6 @@ class Profile extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCarrinhoCompras()
-    {
-        return $this->hasMany(CarrinhoCompras::class, ['utilizador_id' => 'id_profile']);
-    }
 
     /**
      * Gets query for [[DetalhesAluguers]].

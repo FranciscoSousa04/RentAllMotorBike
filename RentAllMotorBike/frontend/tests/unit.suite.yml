@@ -5,3 +5,10 @@ modules:
         - Yii2:
             part: [orm, email, fixtures]
         - Asserts
+        - Db:
+              dsn: 'mysql:host=localhost;dbname=projetodb_test'
+              user: 'root'
+              password: ''
+              populate: true # load dump before all tests
+              cleanup: true # load dump for each test
+              dump: 'tests/_data/dump.sql'

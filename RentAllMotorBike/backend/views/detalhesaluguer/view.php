@@ -15,14 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="detalhesaluguer-view">
 
     <p>
-        <?= Html::a('Update', ['update', 'id_detalhes_aluguer' => $model->id_detalhes_aluguer], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id_detalhes_aluguer' => $model->id_detalhes_aluguer], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
         <?php if($fatura==null) {
             echo Html::a('Emitir fatura', ['fatura/create', 'id_detalhes_aluguer' => $model->id_detalhes_aluguer], ['class' => 'btn btn-success']);
        } else{

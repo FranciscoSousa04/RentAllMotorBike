@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var common\models\Motociclo $model */
+/** @var common\models\motociclo $model */
 
-$this->title = 'Update Motociclo: ' . $model->idmotociclo;
-$this->params['breadcrumbs'][] = ['label' => 'Motociclos', 'url' => ['index']];
+$this->title = 'Update motociclo: ' . $model->idmotociclo;
+$this->params['breadcrumbs'][] = ['label' => 'motociclos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->idmotociclo, 'url' => ['view', 'idmotociclo' => $model->idmotociclo]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

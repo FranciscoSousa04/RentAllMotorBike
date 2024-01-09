@@ -4,12 +4,12 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\TipoMotociclo;
+use common\models\Tipomotociclo;
 
 /**
- * TipoMotocicloSearch represents the model behind the search form of `common\models\TipoMotociclo`.
+ * TipomotocicloSearch represents the model behind the search form of `common\models\Tipomotociclo`.
  */
-class TipoMotocicloSearch extends TipoMotociclo
+class TipomotocicloSearch extends Tipomotociclo
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class TipoMotocicloSearch extends TipoMotociclo
      */
     public function search($params)
     {
-        $query = TipoMotociclo::find();
+        $query = Tipomotociclo::find();
 
         // add conditions that should always apply here
 

@@ -12,10 +12,11 @@ class HomeCest
         $I->amOnRoute(Url::toRoute('/site/index'));
         $I->see('My Application');
 
-        $I->seeLink('About');
-        $I->click('About');
+        $I->seeLink('Sobre');
+        //$I->click('Sobre');
+        $I->selectOption('Sobre', 'Serviço');
         $I->wait(2); // wait for page to be opened
 
-        $I->see('This is the About page.');
+        $I->see('Serviço');
     }
 }

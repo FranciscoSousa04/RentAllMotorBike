@@ -19,7 +19,7 @@ class AssistenciaSearch extends Assistencia
         return [
             [['id_assistencia', 'motociclo_id_assistencia', 'uprofile_id'], 'integer'],
             [['data_pedido', 'mensagem', 'localizacao', 'condicao'], 'safe'],
-            [['MotocicloDrop', 'condicaoDrop'], 'safe']
+            [['motocicloDrop', 'condicaoDrop'], 'safe']
         ];
     }
 
@@ -57,13 +57,13 @@ class AssistenciaSearch extends Assistencia
             return $dataProvider;
         }
 
-        if($this->MotocicloDrop){
-            $query->join('INNER JOIN','Motociclo','Motociclo.idmotociclo = assistencia.Motociclo_id')
-            ->andFilterWhere(['assistencia.motociclo_id_assistencia' => $this->MotocicloDrop]);
+        if($this->motocicloDrop){
+            $query->join('INNER JOIN','motociclo','motociclo.idmotociclo = assistencia.motociclo_id')
+            ->andFilterWhere(['assistencia.motociclo_id_assistencia' => $this->motocicloDrop]);
        }
 
        if($this->condicaoDrop){
-            $query->join('INNER JOIN','Motociclo','Motociclo.idmotociclo = assistencia.Motociclo_id')
+            $query->join('INNER JOIN','motociclo','motociclo.idmotociclo = assistencia.motociclo_id')
             ->andFilterWhere(['assistencia.condicao' => $this->condicaoDrop]);
         }
 

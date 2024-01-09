@@ -16,12 +16,12 @@ use Yii;
  * @property int $uprofile_id
  *
  * @property Profile $profile
- * @property Motociclo $Motociclo
+ * @property motociclo $motociclo
  */
 class Assistencia extends \yii\db\ActiveRecord
 {
 
-    public $MotocicloDrop, $condicaoDrop;
+    public $motocicloDrop, $condicaoDrop;
 
     /**
      * {@inheritdoc}
@@ -44,7 +44,7 @@ class Assistencia extends \yii\db\ActiveRecord
             [['mensagem'], 'string', 'max' => 91],
             [['localizacao'], 'string', 'max' => 51],
             [['uprofile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id_profile']],
-            [['motociclo_id_assistencia'], 'exist', 'skipOnError' => true, 'targetClass' => Motociclo::class, 'targetAttribute' => ['motociclo_id_assistencia' => 'idmotociclo']],
+            [['motociclo_id_assistencia'], 'exist', 'skipOnError' => true, 'targetClass' => motociclo::class, 'targetAttribute' => ['motociclo_id_assistencia' => 'idmotociclo']],
         ];
     }
 
@@ -59,7 +59,7 @@ class Assistencia extends \yii\db\ActiveRecord
             'mensagem' => 'Mensagem',
             'localizacao' => 'Localizacao',
             'condicao' => 'Condicao',
-            'Motociclo_id' => 'Motociclo ID',
+            'motociclo_id' => 'motociclo ID',
             'profile_id' => 'Profile ID',
         ];
     }
@@ -75,12 +75,12 @@ class Assistencia extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Motociclo]].
+     * Gets query for [[motociclo]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getMotociclo()
+    public function getmotociclo()
     {
-        return $this->hasOne(Motociclo::class, ['idmotociclo' => 'Motociclo_id']);
+        return $this->hasOne(motociclo::class, ['idmotociclo' => 'motociclo_id']);
     }
 }

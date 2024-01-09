@@ -1,14 +1,13 @@
-<?php 
-  //calculo do nr de dias do aluguer
-  $dataIni = date_create($model->detalhesAluguerFatura->data_inicio);
-  $dataFim = date_create($model->detalhesAluguerFatura->data_fim);
-  $dataDiff = date_diff($dataIni, $dataFim);
-  $nrDias = (int)$dataDiff->format("%a");
-  $nrDias++;
+<?php
+//calculo do nr de dias do aluguer
+$dataIni = date_create($model->detalhesAluguerFatura->data_inicio);
+$dataFim = date_create($model->detalhesAluguerFatura->data_fim);
+$dataDiff = date_diff($dataIni, $dataFim);
+$nrDias = (int)$dataDiff->format("%a");
+$nrDias++;
 
-  //var_dump($model->detalhesAluguerFatura->profile->nome);
-  
-  //die;
+
+
 ?>
 
 <style type="text/css">
@@ -29,14 +28,15 @@
 
 <body>
 
-  <table width="100%">
+<table width="100%">
     <tr>
         <!--<td valign="top"><img src="././img/logo.jpg" width="150"/> </td>-->
-        <td valign="top"><img src="https://cdn.discordapp.com/attachments/775382256151035936/1061798574788194324/logo.png" width="150"/> </td>
+        <td valign="top"><img src="https://media.discordapp.net/attachments/1166381247287803945/1169631353432715374/RentAllMotorBike.png "width="150"/> </td>
+
         <td align="right">
             <h3>rentallmotorbike</h3>
             <pre>
-                rentallmotorbike
+                 rentallmotorbike
                 Email: rentallmotorbike@gmail.com
                 Contacto: +351 962 234 518
                 Morada: Avenida Marquês de Pombal, Leiria
@@ -45,46 +45,46 @@
         </td>
     </tr>
 
-  </table>
+</table>
 
-  <table width="100%">
+<table width="100%">
     <tr>
         <td><strong>From:</strong> rentallmotorbike</td>
         <td><strong>To:</strong> <?= $model->detalhesAluguerFatura->profile->nome . ' ' . $model->detalhesAluguerFatura->profile->apelido ?></td>
     </tr>
-  </table>
+</table>
 
-  <br/>
-  
-  <table width="100%">
+<br/>
+
+<table width="100%">
     <thead style="background-color: lightgray;">
-      <tr>
+    <tr>
         <th>Descricao</th>
         <th>Preco por dia €</th>
         <th>Total €</th>
-      </tr>
+    </tr>
     </thead>
 
     <tbody>
-      <?php
+    <?php
 
-          foreach ($model->linhaFaturas as $linhaFat) {
-              if ( $linhaFat->preco!= 0){?>
+    foreach ($model->linhaFaturas as $linhaFat) {
+        if ( $linhaFat->preco!= 0){?>
             <tr>
-              <td><?= $linhaFat->descricao ?></td>
-              <td align="right"><?= $linhaFat->preco ?></td>
-              <td align="right"><?= $linhaFat->preco*$nrDias ?></td>
+                <td><?= $linhaFat->descricao ?></td>
+                <td align="right"><?= $linhaFat->preco ?></td>
+                <td align="right"><?= $linhaFat->preco*$nrDias ?></td>
             </tr>
-          <?php } }?>
+        <?php } }?>
     </tbody>
 
     <tfoot>
-        <tr>
-            <td colspan="1"></td>
-            <td align="right">Total €</td>
-            <td align="right" class="gray"><?= $model->preco_total ?></td>
-        </tr>
+    <tr>
+        <td colspan="1"></td>
+        <td align="right">Total €</td>
+        <td align="right" class="gray"><?= $model->preco_total ?></td>
+    </tr>
     </tfoot>
-  </table>
+</table>
 
 </body>

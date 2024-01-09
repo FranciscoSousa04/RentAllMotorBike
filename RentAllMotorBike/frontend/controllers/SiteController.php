@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\motociclo;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -75,7 +76,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $this->layout = 'main_index.php';
+        $motociclos = \common\models\motociclo::find()->andWhere(['not like','motociclo.estado','manutencao'])
+            ->orderBy('idmotociclo DESC')->limit(6)->all();
+        $analises = \common\models\Analise::find()->limit(6)->all();
+
+
+        return $this->render('index', [
+            'motociclos' => $motociclos,
+            'analises' => $analises,
+        ]);
     }
 
     /**
@@ -123,9 +133,9 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                Yii::$app->session->setFlash('success', 'Obrigado por nos contatar. Entraremos em contacto o mais breve possível.');
             } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+                Yii::$app->session->setFlash('error', 'Houve um erro ao enviar a mensagem.');
             }
 
             return $this->refresh();
@@ -146,16 +156,28 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    public function actionService()
+    {
+        return $this->render('service');
+    }
+
+
+
+    public function actionReserva()
+    {
+        return $this->render('reserva');
+    }
+
     /**
      * Signs user up.
      *
      * @return mixed
      */
-    public function actionSignup()
+    public function actionSignup() //-------------------
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            Yii::$app->session->setFlash('success', 'Obrigado pelo seu registo. Pode realizar o login.');
             return $this->goHome();
         }
 
@@ -217,8 +239,8 @@ class SiteController extends Controller
      * Verify email address
      *
      * @param string $token
-     * @throws BadRequestHttpException
      * @return yii\web\Response
+     * @throws BadRequestHttpException
      */
     public function actionVerifyEmail($token)
     {

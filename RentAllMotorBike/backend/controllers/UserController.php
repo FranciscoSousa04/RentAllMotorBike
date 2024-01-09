@@ -59,7 +59,7 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-      return $this ->redirect(['profile/index']);
+      return $this-> redirect(['profile/index']);
     }
 
     /**

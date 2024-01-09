@@ -7,8 +7,7 @@
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
-$this->title = 'Signup';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Registo';
 ?>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -19,7 +18,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'nome')->textInput(['autofocus' => true]) ?>
+
+                <?= $form->field($model, 'apelido') ?>
+
+                <?= $form->field($model, 'telemovel')->textInput(['type' => 'number']) ?>
+
+                <?= $form->field($model, 'nif')->textInput(['type' => 'number']) ?>
+
+                <?= $form->field($model, 'nr_cartaconducao') ?>
+
+                <?= $form->field($model, 'username') ?>
 
                 <?= $form->field($model, 'email') ?>
 
@@ -27,6 +36,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                    <p></p>
+                    Já fez o registo? <?= Html::a('Login', ['site/login']) ?>
+
                 </div>
 
             <?php ActiveForm::end(); ?>

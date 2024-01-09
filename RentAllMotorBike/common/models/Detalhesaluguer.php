@@ -10,7 +10,7 @@ use Yii;
  * @property int $id_detalhes_aluguer
  * @property string $data_inicio
  * @property string $data_fim
- * @property int $Motociclo_id
+ * @property int $motociclo_id
  * @property int $profile_id
  * @property int $seguro_id
  * @property int $localizacao_levantamento_id
@@ -22,7 +22,7 @@ use Yii;
  * @property Localizacao $localizacaoLevantamento
  * @property Profile $profile
  * @property Seguro $seguro
- * @property Motociclo $Motociclo
+ * @property motociclo $motociclo
  */
 class DetalhesAluguer extends \yii\db\ActiveRecord
 {
@@ -45,9 +45,9 @@ class DetalhesAluguer extends \yii\db\ActiveRecord
     {
         return [
             [['data_inicio', 'data_fim'], 'safe'],
-            [['Motociclo_id', 'profile_id', 'seguro_id', 'localizacao_levantamento_id', 'localizacao_devolucao_id','data_inicio', 'data_fim'], 'required'],
-            [['Motociclo_id', 'profile_id', 'seguro_id', 'localizacao_levantamento_id', 'localizacao_devolucao_id'], 'integer'],
-            [['Motociclo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Motociclo::class, 'targetAttribute' => ['Motociclo_id' => 'idmotociclo']],
+            [['motociclo_id', 'profile_id', 'seguro_id', 'localizacao_levantamento_id', 'localizacao_devolucao_id','data_inicio', 'data_fim'], 'required'],
+            [['motociclo_id', 'profile_id', 'seguro_id', 'localizacao_levantamento_id', 'localizacao_devolucao_id'], 'integer'],
+            [['motociclo_id'], 'exist', 'skipOnError' => true, 'targetClass' => motociclo::class, 'targetAttribute' => ['motociclo_id' => 'idmotociclo']],
             [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id_profile']],
             [['seguro_id'], 'exist', 'skipOnError' => true, 'targetClass' => Seguro::class, 'targetAttribute' => ['seguro_id' => 'id_seguro']],
             [['localizacao_levantamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Localizacao::class, 'targetAttribute' => ['localizacao_levantamento_id' => 'id_localizacao']],
@@ -64,7 +64,7 @@ class DetalhesAluguer extends \yii\db\ActiveRecord
             'id_detalhes_aluguer' => 'Id Detalhes Aluguer',
             'data_inicio' => 'Data Inicio',
             'data_fim' => 'Data Fim',
-            'Motociclo_id' => 'Motociclo',
+            'motociclo_id' => 'motociclo',
             'profile_id' => 'Profile',
             'seguro_id' => 'Seguro',
             'localizacao_levantamento_id' => 'Localizacao Levantamento',
@@ -139,6 +139,6 @@ class DetalhesAluguer extends \yii\db\ActiveRecord
      */
     public function getMotociclo()
     {
-        return $this->hasOne(Motociclo::class, ['idmotociclo' => 'Motociclo_id']);
+        return $this->hasOne(Motociclo::class, ['idmotociclo' => 'motociclo_id']);
     }
 }

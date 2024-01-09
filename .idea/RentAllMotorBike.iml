@@ -101,6 +101,22 @@
       <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/yiisoft/yii2-faker" />
       <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/yiisoft/yii2-gii" />
       <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/yiisoft/yii2-symfonymailer" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/codeception/module-db" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/codeception/module-webdriver" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/dompdf/dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/kartik-v/bootstrap-star-rating" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-field-range" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-helpers" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-krajee-base" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-widget-activeform" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-widget-datepicker" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-widget-rating" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/masterminds/html5" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/phenx/php-svg-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/php-webdriver/webdriver" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/sabberworm/php-css-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/symfony/process" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

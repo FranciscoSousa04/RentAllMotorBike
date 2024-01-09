@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['date', 'php:d-m-Y']
             ],
             [
-                'label' => 'Motociclo',
+                'label' => 'motociclo',
                 'value' => function ($model) {
                     return $model->motociclo->marca ." ".$model->motociclo->modelo;
                 }

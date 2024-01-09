@@ -9,9 +9,9 @@ use Yii;
  *
  * @property int $id_imagem
  * @property string $imagem
- * @property int $Motociclo_id
+ * @property int $motociclo_id
  *
- * @property Motociclo $Motociclo
+ * @property motociclo $motociclo
  */
 class Imagem extends \yii\db\ActiveRecord
 {
@@ -29,10 +29,10 @@ class Imagem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['imagem', 'Motociclo_id'], 'required'],
-            [['Motociclo_id'], 'integer'],
+            [['imagem', 'motociclo_id'], 'required'],
+            [['motociclo_id'], 'integer'],
             [['imagem'], 'string', 'max' => 81],
-            [['Motociclo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Motociclo::class, 'targetAttribute' => ['Motociclo_id' => 'idmotociclo']],
+            [['motociclo_id'], 'exist', 'skipOnError' => true, 'targetClass' => motociclo::class, 'targetAttribute' => ['motociclo_id' => 'idmotociclo']],
         ];
     }
 
@@ -44,17 +44,17 @@ class Imagem extends \yii\db\ActiveRecord
         return [
             'id_imagem' => 'Id Imagem',
             'imagem' => 'Imagem',
-            'Motociclo_id' => 'Motociclo ID',
+            'motociclo_id' => 'motociclo ID',
         ];
     }
 
     /**
-     * Gets query for [[Motociclo]].
+     * Gets query for [[motociclo]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getMotociclo()
+    public function getmotociclo()
     {
-        return $this->hasOne(Motociclo::class, ['idmotociclo' => 'Motociclo_id']);
+        return $this->hasOne(motociclo::class, ['idmotociclo' => 'motociclo_id']);
     }
 }

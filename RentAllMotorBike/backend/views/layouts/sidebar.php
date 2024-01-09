@@ -40,7 +40,7 @@ use yii\widgets\DetailView;
             <?= Html::a('motociclos', ['/motociclo/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <?= Html::a('Tipomotociclos', ['/tipo-motociclo/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
+            <?= Html::a('Tipomotociclos', ['/tipomotociclo/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
@@ -52,7 +52,7 @@ use yii\widgets\DetailView;
         <li class="nav-item d-none d-sm-inline-block">
             <?= Html::a('Pedidos de Asssitência', ['/assistencia/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
         </li>
-        
+
         <!-- SidebarSearch Form -->
         <!-- href be escaped -->
         <!-- <div class="form-inline">

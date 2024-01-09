@@ -63,7 +63,7 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
+
         $user = new User();
         $profile = new Profile();
 
@@ -100,13 +100,16 @@ class SignupForm extends Model
         $this->username = $user->username;
         $this->email = $user->email;
         $this->password = $user->password_hash;
-        $this->role = $user->role;
+        $auth = Yii::$app->authManager;
+        $role = $auth->getRole($this->role);
+        $auth->assign($role, $user->getId());
         $this->nome = $profile->nome;
         $this->apelido = $profile->apelido;
         $this->nif = $profile->nif;
         $this->telemovel = $profile->telemovel;
         $this->nr_cartaconducao = $profile->nr_cartaconducao;
         $this->id_user = $profile->id_user;
+
 
         return $model;
     }

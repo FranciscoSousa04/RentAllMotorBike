@@ -1,0 +1,13 @@
+actor: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: http://localhost:80
+            browser: chrome
+            window_size: maximize
+        - Yii2:
+            configFile: 'config/test.php'
+            part: orm
+            transaction: false
+            cleanup: false
+            entryScript: index-test.php
