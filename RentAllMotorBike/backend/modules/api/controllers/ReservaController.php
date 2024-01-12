@@ -5,7 +5,11 @@ namespace backend\modules\api\controllers;
 use common\models\Assistencia;
 use common\models\DetalhesAluguer;
 use common\models\ExtraDetalhesAluguer;
+<<<<<<< HEAD
 use common\models\Veiculo;
+=======
+use common\models\motociclo;
+>>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
 use Psy\Util\Json;
 use Yii;
 use yii\filters\auth\HttpBasicAuth;
@@ -79,19 +83,32 @@ class ReservaController extends \yii\web\Controller
                 "seguro" => $i->seguro->cobertura,
                 "localizacao_levantamento" => $i->localizacaoLevantamento->localizacao,
                 "localizacao_devolucao" => $i->localizacaoLevantamento->localizacao,
+<<<<<<< HEAD
                 "preco" => (($i->veiculo->preco + $precoExtras) * $dias)
+=======
+                "preco" => (($i->motociclo->preco + $precoExtras) * $dias)
+>>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
             );
         }
         return $reserva;
     }
 
+<<<<<<< HEAD
     public function actionPedido($idprofile, $idveiculo, $etmensagem, $etlocalizacao, $etestado)
+=======
+    //http://localhost:8888/motociclo/view?id=1
+    public function actionPedido($idprofile, $idmotociclo, $etmensagem, $etlocalizacao, $etestado)
+>>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         $model = new Assistencia();
         $model->data_pedido = Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');;
+<<<<<<< HEAD
         $model->veiculo_id = $idveiculo;
+=======
+        $model->motociclo_id = $idmotociclo;
+>>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
         $model->profile_id = $idprofile;
         $model->condicao = $etestado;
         $model->mensagem = $etmensagem;

@@ -13,8 +13,12 @@ use Yii;
  * @property int $telemovel
  * @property int $nif
  * @property string $nr_cartaconducao
+ * @property int $id_user
  *
- * @property User $uprofile
+ * @property Analise[] $analises
+ * @property Assistencia[] $assistencias
+ * @property DetalhesAluguer[] $detalhesAluguers
+ * @property User $user
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -32,17 +36,11 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_profile', 'nome', 'apelido', 'telemovel', 'nif', 'nr_cartaconducao'], 'required'],
-            [['id_profile', 'telemovel', 'nif'], 'integer'],
-            [['nome', 'apelido'], 'string', 'max' => 21],
-            [['nr_cartaconducao'], 'string', 'max' => 12],
-            [['telemovel'], 'unique'],
-            [['nif'], 'unique'],
-            [['nr_cartaconducao'], 'unique'],
-            [['id_profile'], 'unique'],
-            [['id_profile'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_profile' => 'id']],
-
-            ];
+            [['nome', 'apelido', 'telemovel', 'nif', 'nr_cartaconducao', 'id_user'], 'required'],
+            [['telemovel', 'nif', 'id_user'], 'integer'],
+            [['nome', 'apelido', 'nr_cartaconducao'], 'string', 'max' => 20],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
+        ];
     }
 
     /**
@@ -56,11 +54,54 @@ class Profile extends \yii\db\ActiveRecord
             'apelido' => 'Apelido',
             'telemovel' => 'Telemovel',
             'nif' => 'Nif',
-            'nr_cartaconducao' => 'Nr Carta Conducao',
+            'nr_cartaconducao' => 'Nr Cartaconducao',
+            'id_user' => 'Id User',
         ];
     }
-    public function getProfile()
+
+    /**
+     * Gets query for [[Analises]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAnalises()
     {
-        return $this->hasOne(User::class, ['id' => 'id_profile']);
+        return $this->hasMany(Analise::class, ['profile_id' => 'id_profile']);
+    }
+
+    /**
+     * Gets query for [[Assistencias]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAssistencias()
+    {
+        return $this->hasMany(Assistencia::class, ['uprofile_id' => 'id_profile']);
+    }
+
+    /**
+     * Gets query for [[CarrinhoCompras]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+
+    /**
+     * Gets query for [[DetalhesAluguers]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDetalhesAluguers()
+    {
+        return $this->hasMany(DetalhesAluguer::class, ['profile_id' => 'id_profile']);
+    }
+
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'id_user']);
     }
 }

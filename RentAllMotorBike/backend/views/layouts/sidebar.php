@@ -21,13 +21,13 @@ use yii\widgets\DetailView;
                 <img src="<?= $assetDir ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a <?= Html::a(\Yii::$app->user->identity->username, ['user/view', 'id' => Yii::$app->user->getId()]) ?>
+                <a <?= Html::a(\Yii::$app->user->identity->username, ['profile/view', 'id_user' => Yii::$app->user->getId()]) ?>
             </div>
         </div>
         <?php if(array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] == "admin") {?>
             <!-- CENAS DO ADMIN -->
             <li class="nav-item d-none d-sm-inline-block">
-                <?= Html::a('Users', ['/user/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
+                <?= Html::a('Users', ['/profile/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
             </li>
         <?php } ?>
         <li class="nav-item d-none d-sm-inline-block">
@@ -40,7 +40,7 @@ use yii\widgets\DetailView;
             <?= Html::a('motociclos', ['/motociclo/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <?= Html::a('Tiposmotociclos', ['/tipo-motociclo/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
+            <?= Html::a('Tipomotociclos', ['/tipomotociclo/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
@@ -52,6 +52,7 @@ use yii\widgets\DetailView;
         <li class="nav-item d-none d-sm-inline-block">
             <?= Html::a('Pedidos de Asssitência', ['/assistencia/index'], ['data-method' => 'post', 'class' => 'nav-link'])?>
         </li>
+
         <!-- SidebarSearch Form -->
         <!-- href be escaped -->
         <!-- <div class="form-inline">

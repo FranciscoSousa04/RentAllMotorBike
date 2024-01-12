@@ -13,7 +13,11 @@ use yii\web\Controller;
 
 class SeguroController extends \yii\web\Controller
 {
+<<<<<<< HEAD
     public $modelClass = 'common\models\Motociclo';
+=======
+    public $modelClass = 'common\models\motociclo';
+>>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
 
     public function actionIndex()
     {

@@ -21,7 +21,9 @@ class SignupForm extends Model
     public $apelido;
     public $telemovel;
     public $nif;
-    public $cartaConducao;
+    public $nr_cartaconducao;
+
+    public $id_user;
 
 
     /**
@@ -56,8 +58,11 @@ class SignupForm extends Model
             ['nif', 'required'],
             ['nif', 'integer','min' => 000000000, 'max' => 999999999],
 
-            ['cartaConducao', 'required'],
-            ['cartaConducao', 'string', 'min' => 11, 'max' => 13],
+            ['nr_cartaconducao', 'required'],
+            ['nr_cartaconducao', 'string', 'min' => 11, 'max' => 13],
+
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
+
         ];
     }
 
@@ -86,13 +91,13 @@ class SignupForm extends Model
         $user->save();
 
         $profile = new Profile();
-        $profile->id_profile = $user->id;
         $profile->nome = $this->nome;
         $profile->apelido = $this->apelido;
         $profile->nif = $this->nif;
         $profile->telemovel = $this->telemovel;
-        $profile->nr_cartaconducao = $this->cartaConducao;
-        $profile->save();
+        $profile->nr_cartaconducao = $this->nr_cartaconducao;
+        $profile->id_user = $user->id;
+        $profile->save(false);
 
         return true;
     }

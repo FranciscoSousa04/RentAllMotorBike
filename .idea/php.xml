@@ -104,6 +104,22 @@
       <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/npm-asset/bootstrap" />
       <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/yiisoft/yii2-bootstrap4" />
       <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/almasaeed2010/adminlte" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-field-range" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/kartik-v/bootstrap-star-rating" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-helpers" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-widget-activeform" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/kartik-v/yii2-widget-rating" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/codeception/module-db" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/codeception/module-webdriver" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/php-webdriver/webdriver" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/symfony/process" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
