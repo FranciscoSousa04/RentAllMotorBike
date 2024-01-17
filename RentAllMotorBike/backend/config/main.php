@@ -72,7 +72,7 @@ return [
                         'pluralize' => false,
                     ],
 
-                
+
 
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'analises', 'pluralize' => false,],
 
