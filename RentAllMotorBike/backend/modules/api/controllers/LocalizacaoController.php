@@ -12,7 +12,7 @@ use yii\web\Controller;
 
 class LocalizacaoController extends \yii\web\Controller
 {
-    public $modelClass = 'common\models\motociclo';
+    public $modelClass = 'common\models\Motociclo';
 
     public function actionIndex()
     {

@@ -12,23 +12,20 @@ use yii\web\Controller;
 
 class AnaliseController extends \yii\web\Controller
 {
-    public $modelClass = 'common\models\Analise';
+    public $modelClass = 'common\models\Motociclo';
 
     public function actionIndex()
     {
-        if (!\Yii::$app->user->isGuest) {
+
 
             $motociclo = Analise::find()->all();
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
             return $motociclo;
-        }
+
     }
 
-<<<<<<< HEAD
-=======
-    //http://localhost:8888/equipamento/total
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
+
     public function actionTotal()
     {
         $eqpmodel = new $this->modelClass;

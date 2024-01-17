@@ -4,11 +4,8 @@ namespace backend\modules\api\controllers;
 
 use common\models\DetalhesAluguer;
 use common\models\ExtraDetalhesAluguer;
-<<<<<<< HEAD
-use common\models\Veiculo;
-=======
+
 use common\models\motociclo;
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
 use Psy\Util\Json;
 use Yii;
 use yii\filters\auth\HttpBasicAuth;
@@ -17,19 +14,11 @@ use yii\rest\ActiveController;
 use yii\web\Controller;
 
 
-<<<<<<< HEAD
+
 class MotocicloController extends \yii\web\Controller
 {
     public $modelClass = 'common\models\Motociclo';
 
-
-=======
-class motocicloController extends \yii\web\Controller
-{
-    public $modelClass = 'common\models\motociclo';
-
-    //http://localhost:8888/motociclo/
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
 
     public function init()
     {
@@ -42,21 +31,15 @@ class motocicloController extends \yii\web\Controller
     public function actionIndex()
     {
 
-<<<<<<< HEAD
+
         $motociclo = Motociclo::find()->all();
-=======
-        $motociclo = motociclo::find()->all();
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         return $motociclo;
 
     }
 
-<<<<<<< HEAD
-=======
-    //http://localhost:8888/motociclo/total
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
+
     public function actionTotal()
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -66,29 +49,21 @@ class motocicloController extends \yii\web\Controller
         return ['total' => count($recs)];
     }
 
-<<<<<<< HEAD
-=======
-    //http://localhost:8888/motociclo/view?id=1
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
+
     public function actionView($id)
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-<<<<<<< HEAD
+
         $motociclo = Motociclo::findOne($id);
-=======
-        $motociclo = motociclo::findOne($id);
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
+
 
         return $motociclo;
 
     }
 
 
-<<<<<<< HEAD
-=======
-    //http://localhost:8888/motociclo/view?id=1
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
+
     public function actionCreate($data_inicio, $data_fim ,$motociclo_id, $profile_id, $seguro_id, $localizacaol, $localizacaod)
     {
 
@@ -144,11 +119,9 @@ class motocicloController extends \yii\web\Controller
         $telemovel = $request->post('telemovel');
         $nr_carta_conducao = $request->post('nr_carta_conducao');
 
-<<<<<<< HEAD
+
         $model = new Motociclo();
-=======
-        $model = new motociclo();
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
+
         $model->marca = "tesete";
         $model->modelo = "tesete";
         $model->combustivel = "tesete";
@@ -156,11 +129,8 @@ class motocicloController extends \yii\web\Controller
         $model->matricula = "tesete";
         $model->descricao = "tesete";
         $model->estado = "pronto";
-<<<<<<< HEAD
-        $model->tipo_veiculo_id = 1;
-=======
+
         $model->tipo_motociclo_id = 1;
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
         $model->localizacao_id = 1;
         $model->franquia = 12;
         if ($model->save()) {

@@ -223,8 +223,7 @@ class UserController extends ActiveController
         $profile->save();
     }
 
-    public
-    function actionViewprofile($id)
+    public function actionViewprofile($id)
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 

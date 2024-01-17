@@ -2,6 +2,7 @@
 
 namespace backend\modules\api\controllers;
 
+use common\models\Motociclo;
 use common\models\Profile;
 use common\models\User;
 use Psy\Util\Json;
@@ -15,7 +16,9 @@ use yii\widgets\ActiveForm;
 
 class ProfileController extends \yii\web\Controller
 {
-    public $modelClass = 'common\models\Profile';
+    public $modelClass = 'common\models\Motociclo';
+
+
     public function init()
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -23,8 +26,10 @@ class ProfileController extends \yii\web\Controller
         parent::init();
         \Yii::$app->user->enableSession = false;
     }
+
     public function actionIndex()
     {
+
 
         $motociclo = Profile::find()->all();
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -33,16 +38,16 @@ class ProfileController extends \yii\web\Controller
 
     }
 
-<<<<<<< HEAD
-=======
-    //http://localhost:8888/equipamento/total
->>>>>>> da49967a756b0a4535921967b958dc43d7aa0dc1
+
     public function actionTotal()
     {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
         $eqpmodel = new $this->modelClass;
         $recs = $eqpmodel::find()->all();
         return ['total' => count($recs)];
     }
+
 
     public function actionView($id)
     {
@@ -50,8 +55,15 @@ class ProfileController extends \yii\web\Controller
 
         $motociclo = Profile::findOne($id);
 
-        return $motociclo;
+        if ($motociclo === null) {
+            // Profile not found, you may want to handle this case
+            return ['error' => 'Profile not found'];
+        }
 
+        return $motociclo;
     }
+
+
+
 
 }

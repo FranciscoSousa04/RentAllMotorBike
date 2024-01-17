@@ -16,25 +16,22 @@ return [
     ],
     'modules' => [
         'api' => [
-            'class' => 'backend\modules\api\API',
+            'class' => 'backend\modules\api\ModuleAPI',
         ],
-        'rbac' => [
-            'class' => 'yii2mod\rbac\Module',
-            'as access' => [
-                'class' => 'yii\filters\AccessControl',
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ],
+        'cookieValidationKey' => 'qhh_D_rjXk5nFH4dD-liyIl0RNvRXU9R',
+
+        'parsers' => [
+            'application/json' => 'yii\web\JsonParser',
+        ]
     ],
-    'components' => [
+
+        'components' => [
         'request' => [
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
             'csrfParam' => '_csrf-backend',
-        ],
+            ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -65,6 +62,32 @@ return [
                 'admin/' => 'user/view',
                 'admin' => 'user/update',
                 'gestor' => 'user/view',
+
+                    ['class' => 'yii\rest\UrlRule',
+                        'controller' => 'api/user',
+                        'pluralize' => false,
+                    ],
+                    ['class' => 'yii\rest\UrlRule',
+                        'controller' => 'api/motociclo',
+                        'pluralize' => false,
+                    ],
+
+                
+
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'analises', 'pluralize' => false,],
+
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'Assistencia'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'DetalhesAluguer'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'api/extra', 'pluralize' => false],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'ExtraDetalhesAluguer'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'Fatura'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'Imagem'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'LinhaFatura'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'Localizacao'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'Profile'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'Seguro'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'TipoMotociclo'],
+
 
             ],
         ],

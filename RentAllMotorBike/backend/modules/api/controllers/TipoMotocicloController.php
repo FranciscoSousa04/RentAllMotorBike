@@ -12,17 +12,17 @@ use yii\web\Controller;
 
 class TipomotocicloController extends \yii\web\Controller
 {
-    public $modelClass = 'common\models\motociclo';
+    public $modelClass = 'common\models\Motociclo';
 
     public function actionIndex()
     {
-        if (!\Yii::$app->user->isGuest) {
+
 
             $motociclo = Tipomotociclo::find()->all();
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
             return $motociclo;
-        }
+
     }
 
     //http://localhost:8888/equipamento/total
@@ -34,3 +34,4 @@ class TipomotocicloController extends \yii\web\Controller
     }
 
 }
+
