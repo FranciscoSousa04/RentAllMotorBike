@@ -85,6 +85,7 @@ return [
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'LinhaFatura'],
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'Localizacao'],
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'Profile'],
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'Login'],
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'Seguro'],
                     ['class' => 'yii\rest\UrlRule', 'controller' => 'TipoMotociclo'],
 

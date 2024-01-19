@@ -117,6 +117,9 @@
       <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/php-webdriver/webdriver" />
       <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/sabberworm/php-css-parser" />
       <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/psy/psysh" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/RentAllMotorBike/vendor/codeception/lib-web" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

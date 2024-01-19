@@ -104,6 +104,7 @@ class ReservaController extends \yii\web\Controller
         $model->localizacao = $etlocalizacao;
         $headers = Yii::$app->getRequest()->getHeaders();
         $headers->set('auth', 'YOUR_AUTH_TOKEN');
+
         if ($model->save()) {
 
             return [
@@ -115,6 +116,45 @@ class ReservaController extends \yii\web\Controller
             return [
                 'status' => 'error',
                 'errors' => $model->errors,
+            ];
+        }
+    }
+
+    public function actionCreate()
+    {
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $detalhesAluguer = new DetalhesAluguer();
+
+        $resquest = Yii::$app->request;
+
+       // $detalhesAluguer->data_inicio = date('Y-m-d H:i', strtotime($resquest->post('data_inicio')));
+        //$detalhesAluguer->data_fim = date('Y-m-d H:i', strtotime($resquest->post('data_fim')));
+
+        $detalhesAluguer->data_inicio = $resquest->post('data_inicio');
+        $detalhesAluguer->data_fim =  $resquest->post('data_fim');
+        $detalhesAluguer->motociclo_id = $resquest->post('motociclo_id');
+        $detalhesAluguer->profile_id = $resquest->post('profile_id');
+        $detalhesAluguer->seguro_id = $resquest->post('seguro_id');
+        $detalhesAluguer->localizacao_levantamento_id = $resquest->post('localizacao_levantamento');
+        $detalhesAluguer->localizacao_devolucao_id = $resquest->post('localizacao_devulocao');
+        $headers = Yii::$app->getRequest()->getHeaders();
+        $headers->set('auth', 'YOUR_AUTH_TOKEN');
+       //var_dump($resquest->post('data_inicio'));die();
+        if ($detalhesAluguer->save()) {
+
+            return [
+                'status' => 'success',
+                'message' => 'detalhes has been created successfully.',
+                'idreserva' => $detalhesAluguer->id_detalhes_aluguer
+            ];
+        } else {
+            return [
+                'status' => 'error',
+                'errors' => $detalhesAluguer->errors,
+
+
             ];
         }
     }

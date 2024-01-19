@@ -3,8 +3,10 @@
 namespace backend\modules\api\controllers;
 
 use backend\models\SignupForm;
+use common\models\LoginForm;
 use common\models\Profile;
 use common\models\User;
+
 use Yii;
 use yii\base\Behavior;
 use yii\filters\auth\HttpBasicAuth;
@@ -14,6 +16,7 @@ use yii\rest\ActiveController;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;
+use function Symfony\Component\String\u;
 
 /**
  * Default controller for the api module
@@ -53,35 +56,32 @@ class UserController extends ActiveController
         }
     }
 
-    public function actionLogin()
+
+    public function actionLogin($username, $password)
     {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-        $request = Yii::$app->request;
-        $username = $request->post('username');
-        $password = $request->post('password');
-        $user = User::find()->where(['username' => $username])->one();
+        $model = new LoginForm();
+        $model->username = $username;
+        $model->password = $password;
 
-        if ($user != null && Yii::$app->security->validatePassword($password, $user->password_hash)) {
-            $role = array_keys(Yii::$app->authManager->getRolesByUser($user->id))[0];
-            $response = [
-                'success' => true,
-                'message' => 'Login successful.',
-                'username' => $user->username,
-                'email' => $user->email,
-                'role' => $role,
-                'id' => $user->id,
+        if ($model->login()) {
+            $profile = Profile::find()->where(['id_user' => Yii::$app->user->identity->id])->one();
+            $user = (object) [
+                'id_profile' => $profile->id_profile,
+                'username' => Yii::$app->user->identity->username,
+                'nome' => $profile->nome,
+                'apelido' => $profile->apelido,
+                'telemovel' => $profile->telemovel,
+                'nif' => $profile->nif,
+                'nr_cartaconducao' => $profile->nr_cartaconducao,
+                'role' => array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0],
+                'email' => Yii::$app->user->identity->email,
             ];
-            // You can set the user session here
-            Yii::$app->user->login($user);
-        } else {
-            $response = [
-                'success' => false,
-                'message' => 'Incorrect username or password.',
-            ];
+
+            return $user;
         }
-
-        return $response;
+        return null;
     }
 
 

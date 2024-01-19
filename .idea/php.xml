@@ -120,6 +120,9 @@
       <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/codeception/module-webdriver" />
       <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/php-webdriver/webdriver" />
       <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/RentAllMotorBike/vendor/codeception/lib-web" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
