@@ -40,7 +40,7 @@ class ReservaController extends \yii\web\Controller
                 "motociclo_id" => $i->motociclo_id,
                 "marca" => $i->motociclo->marca,
                 "modelo" => $i->motociclo->modelo,
-                "profile_id" => $i->id_user,
+                "profile_id" => $i->profile_id,
                 "seguro_id" => $i->seguro_id,
                 "seguro" => $i->seguro->cobertura,
                 "localizacao_levantamento" => $i->localizacaoLevantamento->localizacao,
@@ -55,13 +55,11 @@ class ReservaController extends \yii\web\Controller
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $reservas = DetalhesAluguer::find()->all();
-        $reserva = array();
+        $listaReservas = array();
         $precoExtras = 0;
-        /*foreach ($i->extraDetalhesAluguers as $extraDetalhesAl) {
-            $precoExtras += $extraDetalhesAl->extra->preco;
-        }*/
+
         foreach ($reservas as $i) {
-            $reserva[] = array(
+            $listaReservas[] = array(
                 $dataIni = date_create($i->data_inicio),
                 $dataFim = date_create($i->data_fim),
                 $dataDiff = date_diff($dataIni, $dataFim),
@@ -73,17 +71,17 @@ class ReservaController extends \yii\web\Controller
                 "motociclo_id" => $i->motociclo_id,
                 "marca" => $i->motociclo->marca,
                 "modelo" => $i->motociclo->modelo,
-                "profile_id" => $i->id_user,
+                "profile_id" => $i->profile_id,
                 "seguro_id" => $i->seguro_id,
                 "seguro" => $i->seguro->cobertura,
                 "localizacao_levantamento" => $i->localizacaoLevantamento->localizacao,
                 "localizacao_devolucao" => $i->localizacaoLevantamento->localizacao,
-
                 "preco" => (($i->motociclo->preco + $precoExtras) * $dias)
-
             );
         }
-        return $reserva;
+        var_dump($listaReservas);
+        die();
+        return $listaReservas;
     }
 
 
@@ -129,19 +127,19 @@ class ReservaController extends \yii\web\Controller
 
         $resquest = Yii::$app->request;
 
-       // $detalhesAluguer->data_inicio = date('Y-m-d H:i', strtotime($resquest->post('data_inicio')));
+        // $detalhesAluguer->data_inicio = date('Y-m-d H:i', strtotime($resquest->post('data_inicio')));
         //$detalhesAluguer->data_fim = date('Y-m-d H:i', strtotime($resquest->post('data_fim')));
 
         $detalhesAluguer->data_inicio = $resquest->post('data_inicio');
-        $detalhesAluguer->data_fim =  $resquest->post('data_fim');
+        $detalhesAluguer->data_fim = $resquest->post('data_fim');
         $detalhesAluguer->motociclo_id = $resquest->post('motociclo_id');
         $detalhesAluguer->profile_id = $resquest->post('profile_id');
         $detalhesAluguer->seguro_id = $resquest->post('seguro_id');
         $detalhesAluguer->localizacao_levantamento_id = $resquest->post('localizacao_levantamento');
         $detalhesAluguer->localizacao_devolucao_id = $resquest->post('localizacao_devulocao');
-        $headers = Yii::$app->getRequest()->getHeaders();
-        $headers->set('auth', 'YOUR_AUTH_TOKEN');
-       //var_dump($resquest->post('data_inicio'));die();
+        //$headers = Yii::$app->getRequest()->getHeaders();
+        // $headers->set('auth', 'YOUR_AUTH_TOKEN');
+        //var_dump($resquest->post('data_inicio'));die();
         if ($detalhesAluguer->save()) {
 
             return [

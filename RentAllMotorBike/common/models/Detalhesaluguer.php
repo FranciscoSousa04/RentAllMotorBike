@@ -44,6 +44,7 @@ class DetalhesAluguer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['id_detalhes_aluguer' , 'extras', 'dias'], 'safe'],
             [['data_inicio', 'data_fim'], 'safe'],
             [['motociclo_id', 'profile_id', 'seguro_id', 'localizacao_levantamento_id', 'localizacao_devolucao_id','data_inicio', 'data_fim'], 'required'],
             [['motociclo_id', 'profile_id', 'seguro_id', 'localizacao_levantamento_id', 'localizacao_devolucao_id'], 'integer'],
