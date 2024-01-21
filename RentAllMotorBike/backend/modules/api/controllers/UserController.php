@@ -154,24 +154,20 @@ class UserController extends ActiveController
         $telemovel = $request->post('telemovel');
         $nif = $request->post('nif');
         $carta = $request->post('carta');
+
         
         $userprofile = Profile::find()->where(['id_profile' => $id])->One();
         $user = user::find()->where(['id' => $userprofile->id_user])->One();
-        
-        
-        
+
         $user->username = $username;
         $user->email = $email;
         $userprofile->nome = $nome;
         $userprofile->apelido = $apelido;
-        $userprofile->telemovel = $telemovel;
-        $userprofile->nif = $nif;
+        $userprofile->telemovel = (int)$telemovel;
+        $userprofile->nif = (int)$nif;
         $userprofile->nr_cartaconducao = $carta;
         
-
-        
-    
-        if ($user->validate() && $user->save()) {
+        if ($user->validate() && $user->save() && $userprofile->validate() && $userprofile->save() ) {
             return [
                 'status' => 'success',
                 'data' => 'User has been updated successfully.'
@@ -198,7 +194,7 @@ class UserController extends ActiveController
         $model->nome = $nome;
         $model->apelido = $apelido;
         $model->telemovel = $telemovel;
-        $model->nr_carta_conducao = $nr_carta_conducao;
+        $model->nr_cartaconducao = $nr_carta_conducao;
 
         $headers = Yii::$app->getRequest()->getHeaders();
         $headers->set('auth', 'YOUR_AUTH_TOKEN');
