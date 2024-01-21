@@ -82,11 +82,19 @@ class ReservaController extends \yii\web\Controller
 
         return $listaReservas;
     }
-        public function actionRemoverreserva($id)
-        {
-            $removerReserva = DetalhesAluguer::findOne($id);
-            $removerReserva->delete();
+
+    public function actionRemoverreserva($id)
+    {
+        $extraDetalhes = ExtraDetalhesAluguer::find()->where(['id_extra_detalhes_aluguer' => $id])->all();
+
+        if ($extraDetalhes != null) {
+            for ($i = 0; $i < count($extraDetalhes); $i++) {
+                $extraDetalhes[$i]->delete();
+            }
         }
+        $removerReserva = DetalhesAluguer::findOne($id);
+        $removerReserva->delete();
+    }
 
 
     //http://localhost:8888/motociclo/view?id=1
