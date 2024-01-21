@@ -146,16 +146,32 @@ class UserController extends ActiveController
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         $request = Yii::$app->request;
+
         $username = $request->post('username');
-        $password = $request->post('password');
         $email = $request->post('email');
-        $model = User::findOne($id);
-        $model->username = $username;
-        $model->email = $email;
-        //$model->password = $password;
-        $headers = Yii::$app->getRequest()->getHeaders();
-        $headers->set('auth', 'YOUR_AUTH_TOKEN');
-        if ($model->validate() && $model->save()) {
+        $nome = $request->post('nome');
+        $apelido = $request->post('apelido');
+        $telemovel = $request->post('telemovel');
+        $nif = $request->post('nif');
+        $carta = $request->post('carta');
+        
+        $userprofile = Profile::find()->where(['id_profile' => $id])->One();
+        $user = user::find()->where(['id' => $userprofile->id_user])->One();
+        
+        
+        
+        $user->username = $username;
+        $user->email = $email;
+        $userprofile->nome = $nome;
+        $userprofile->apelido = $apelido;
+        $userprofile->telemovel = $telemovel;
+        $userprofile->nif = $nif;
+        $userprofile->nr_cartaconducao = $carta;
+        
+
+        
+    
+        if ($user->validate() && $user->save()) {
             return [
                 'status' => 'success',
                 'data' => 'User has been updated successfully.'
@@ -163,7 +179,7 @@ class UserController extends ActiveController
         } else {
             return [
                 'status' => 'error',
-                'errors' => $model->errors
+                'errors' => $user->errors
             ];
         }
     }

@@ -92,7 +92,7 @@ class ReservaController extends \yii\web\Controller
                 $extraDetalhes[$i]->delete();
             }
         }
-        $removerReserva = DetalhesAluguer::findOne($id);
+        $removerReserva = DetalhesAluguer::find()->where(['id_detalhes_aluguer' => $id])->One();
         $removerReserva->delete();
     }
 
