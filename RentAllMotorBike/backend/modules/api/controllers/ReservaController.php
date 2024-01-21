@@ -79,10 +79,14 @@ class ReservaController extends \yii\web\Controller
                 "preco" => (($i->motociclo->preco + $precoExtras) * $dias)
             );
         }
-        var_dump($listaReservas);
-        die();
+
         return $listaReservas;
     }
+        public function actionRemoverreserva($id)
+        {
+            $removerReserva = DetalhesAluguer::findOne($id);
+            $removerReserva->delete();
+        }
 
 
     //http://localhost:8888/motociclo/view?id=1
