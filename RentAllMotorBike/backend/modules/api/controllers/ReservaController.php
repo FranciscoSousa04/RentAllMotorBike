@@ -85,15 +85,22 @@ class ReservaController extends \yii\web\Controller
 
     public function actionRemoverreserva($id)
     {
-        $extraDetalhes = ExtraDetalhesAluguer::find()->where(['id_extra_detalhes_aluguer' => $id])->all();
 
-        if ($extraDetalhes != null) {
-            for ($i = 0; $i < count($extraDetalhes); $i++) {
-                $extraDetalhes[$i]->delete();
+        $removerReserva = DetalhesAluguer::find()->where(['id_detalhes_aluguer' => $id])->one();
+
+        // Verifique se o modelo foi encontrado antes de tentar excluir
+        if ($removerReserva !== null) {
+            try {
+                // Exclua o modelo
+                $removerReserva->delete();
+            } catch (\Exception $e) {
+                // Lidar com o erro, por exemplo, exibindo a mensagem
+                echo 'Erro ao excluir reserva: ' . $e->getMessage();
             }
+        } else {
+            // Lógica para lidar com o caso em que a reserva não foi encontrada
+            echo 'Reserva não encontrada.';
         }
-        $removerReserva = DetalhesAluguer::find()->where(['id_detalhes_aluguer' => $id])->One();
-        $removerReserva->delete();
     }
 
 
